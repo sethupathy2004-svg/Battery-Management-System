@@ -45,3 +45,24 @@ function clearFields() {
     document.getElementById("voltage").value = "";
     document.getElementById("capacity").value = "";
 }
+function calculateSOC() {
+    let voltage = document.getElementById("measuredVoltage").value;
+    let ratedVoltage = document.getElementById("ratedVoltage").value;
+
+    if (voltage === "" || ratedVoltage === "") {
+        alert("Enter voltage values");
+        return;
+    }
+
+    fetch(`http://localhost:8080/battery/soc?voltage=${voltage}&ratedVoltage=${ratedVoltage}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("socResult").innerText =
+                "State of Charge (SOC): " + data.toFixed(2) + "%";
+        })
+        .catch(error => {
+            console.error(error);
+            alert("Backend not running");
+        });
+}
+
