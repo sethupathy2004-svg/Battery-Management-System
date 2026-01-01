@@ -38,6 +38,18 @@
         </thead>
         <tbody id="batteryTable"></tbody>
     </table>
+    <h2>Calculate Battery SOC</h2>
+
+<label>Measured Voltage (V)</label>
+<input type="number" id="measuredVoltage">
+
+<label>Rated Voltage (V)</label>
+<input type="number" id="ratedVoltage">
+
+<button onclick="calculateSOC()">Calculate SOC</button>
+
+<h3 id="socResult"></h3>
+
 </div>
 
 <script src="script.js"></script>
