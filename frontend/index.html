@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battery Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Battery Management System</h1>
+
+<div class="container">
+    <h2>Add Battery</h2>
+
+    <label>Battery Name</label>
+    <input type="text" id="name">
+
+    <label>Battery Type</label>
+    <input type="text" id="type">
+
+    <label>Rated Voltage (V)</label>
+    <input type="number" id="voltage">
+
+    <label>Rated Capacity (Ah)</label>
+    <input type="number" id="capacity">
+
+    <button onclick="addBattery()">Add Battery</button>
+
+    <h2>Battery List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Voltage</th>
+                <th>Capacity</th>
+            </tr>
+        </thead>
+        <tbody id="batteryTable"></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
