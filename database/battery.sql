@@ -19,3 +19,4 @@ CREATE TABLE battery_data (
     timestamp DATETIME,
     FOREIGN KEY (battery_id) REFERENCES battery(battery_id)
 );
+
