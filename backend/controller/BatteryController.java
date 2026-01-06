@@ -10,31 +10,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/battery")
-@CrossOrigin
 public class BatteryController {
 
     @Autowired
     private BatteryService batteryService;
+    @PostMapping("/add")
+    public Battery addBattery(@RequestBody Battery battery) {
+        return batteryService.saveBattery(battery);
+    }
+
+    @GetMapping("/all")
+    public List<Battery> getAllBatteries() {
+        return batteryService.getAllBatteries();
+    }
 
     @GetMapping("/soc")
     public double getSOC(@RequestParam double voltage,
                          @RequestParam double ratedVoltage) {
         return batteryService.calculateSOC(voltage, ratedVoltage);
-    }
-
-    @PostMapping("/add")
-    public Battery addBattery(@RequestBody Battery battery) {
-        return batteryService.addBattery(battery);
-    }
-
-    @PostMapping("/{batteryId}/data")
-    public BatteryData addBatteryData(@PathVariable int batteryId,
-                                      @RequestBody BatteryData data) {
-        return batteryService.saveBatteryData(batteryId, data);
-    }
-
-    @GetMapping("/{batteryId}/data")
-    public List<BatteryData> getBatteryData(@PathVariable int batteryId) {
-        return batteryService.getBatteryData(batteryId);
     }
 }
