@@ -1,57 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Battery Management System</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Battery Management System</h1>
+<h2>Battery SOC Calculator</h2>
 
-<div class="container">
-    <h2>Add Battery</h2>
+<label>Battery Name:</label>
+<input type="text" id="name"><br><br>
 
-    <label>Battery Name</label>
-    <input type="text" id="name">
+<label>Voltage:</label>
+<input type="number" id="voltage"><br><br>
 
-    <label>Battery Type</label>
-    <input type="text" id="type">
+<label>Rated Voltage:</label>
+<input type="number" id="ratedVoltage"><br><br>
 
-    <label>Rated Voltage (V)</label>
-    <input type="number" id="voltage">
-
-    <label>Rated Capacity (Ah)</label>
-    <input type="number" id="capacity">
-
-    <button onclick="addBattery()">Add Battery</button>
-
-    <h2>Battery List</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Voltage</th>
-                <th>Capacity</th>
-            </tr>
-        </thead>
-        <tbody id="batteryTable"></tbody>
-    </table>
-    <h2>Calculate Battery SOC</h2>
-
-<label>Measured Voltage (V)</label>
-<input type="number" id="measuredVoltage">
-
-<label>Rated Voltage (V)</label>
-<input type="number" id="ratedVoltage">
-
+<button onclick="saveBattery()">Save Battery</button>
 <button onclick="calculateSOC()">Calculate SOC</button>
 
-<h3 id="socResult"></h3>
+<h3 id="result"></h3>
 
-</div>
+<h3>Battery List</h3>
+<button onclick="loadBatteries()">Load Batteries</button>
+
+<ul id="batteryList"></ul>
 
 <script src="script.js"></script>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+.container {
+    width: 60%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    width: 80%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+}
+</style>
+
 </body>
 </html>
