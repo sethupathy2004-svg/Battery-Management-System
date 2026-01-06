@@ -16,25 +16,15 @@ public class BatteryService {
     @Autowired
     private BatteryRepository batteryRepository;
 
-    @Autowired
-    private BatteryDataRepository batteryDataRepository;
-
-    public double calculateSOC(double voltage, double ratedVoltage) {
-        return (voltage / ratedVoltage) * 100;
-    }
-
-    public Battery addBattery(Battery battery) {
+    public Battery saveBattery(Battery battery) {
         return batteryRepository.save(battery);
     }
 
-    public BatteryData saveBatteryData(int batteryId, BatteryData data) {
-        Battery battery = batteryRepository.findById(batteryId).orElseThrow();
-        data.setBattery(battery);
-        data.setTimestamp(LocalDateTime.now());
-        return batteryDataRepository.save(data);
+    public List<Battery> getAllBatteries() {
+        return batteryRepository.findAll();
     }
 
-    public List<BatteryData> getBatteryData(int batteryId) {
-        return batteryDataRepository.findByBattery_BatteryId(batteryId);
+    public double calculateSOC(double voltage, double ratedVoltage) {
+        return (voltage / ratedVoltage) * 100;
     }
 }
