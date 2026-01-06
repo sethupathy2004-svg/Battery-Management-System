@@ -3,56 +3,46 @@ package com.bms.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "battery")
 public class Battery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int batteryId;
+    private int id;
 
-    private String batteryName;
-    private String batteryType;
+    private String name;
+    private double voltage;
     private double ratedVoltage;
-    private double ratedCapacity;
 
-    // Getters and Setters
-    public int getBatteryId() {
-        return batteryId;
+    // Getters & Setters
+    public int getId() {
+        return id;
     }
 
-    public void setBatteryId(int batteryId) {
-        this.batteryId = batteryId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getBatteryName() {
-        return batteryName;
+    public String getName() {
+        return name;
     }
 
-    public void setBatteryName(String batteryName) {
-        this.batteryName = batteryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBatteryType() {
-        return batteryType;
+    public double getVoltage() {
+        return voltage;
     }
-
-    public void setBatteryType(String batteryType) {
-        this.batteryType = batteryType;
-    }
-
-    public double getRatedVoltage() {
-        return ratedVoltage;
+    public void setVoltage(double voltage) {
+        this.voltage = voltage;
     }
 
     public void setRatedVoltage(double ratedVoltage) {
         this.ratedVoltage = ratedVoltage;
     }
-
-    public double getRatedCapacity() {
-        return ratedCapacity;
+    public double getRatedVoltage() {
+        return ratedVoltage;
     }
 
-    public void setRatedCapacity(double ratedCapacity) {
-        this.ratedCapacity = ratedCapacity;
-    }
+   
 }
