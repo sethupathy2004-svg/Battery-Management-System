@@ -1,59 +1,81 @@
 package com.bms.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-public class Battery {
+@Table(name = "battery_data")
+public class BatteryData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int batteryId;
+    private int dataId;
 
-    private String batteryName;
-    private String batteryType;
-    private double ratedVoltage;
-    private double ratedCapacity;
+    @ManyToOne
+    @JoinColumn(name = "battery_id")
+    private Battery battery;
 
-    public int getBatteryId() {
-        return batteryId;
+    private double voltage;
+    private double current;
+    private double temperature;
+    private double soc;
+
+    private LocalDateTime timestamp;
+
+    // Getters and Setters
+    public int getDataId() {
+        return dataId;
     }
 
-    public void setBatteryId(int batteryId) {
-        this.batteryId = batteryId;
+    public void setDataId(int dataId) {
+        this.dataId = dataId;
     }
 
-    public String getBatteryName() {
-        return batteryName;
+    public Battery getBattery() {
+        return battery;
     }
 
-    public void setBatteryName(String batteryName) {
-        this.batteryName = batteryName;
+    public void setBattery(Battery battery) {
+        this.battery = battery;
     }
 
-    public String getBatteryType() {
-        return batteryType;
+    public double getVoltage() {
+        return voltage;
     }
 
-    public void setBatteryType(String batteryType) {
-        this.batteryType = batteryType;
+    public void setVoltage(double voltage) {
+        this.voltage = voltage;
     }
 
-    public double getRatedVoltage() {
-        return ratedVoltage;
+    public double getCurrent() {
+        return current;
     }
 
-    public void setRatedVoltage(double ratedVoltage) {
-        this.ratedVoltage = ratedVoltage;
+    public void setCurrent(double current) {
+        this.current = current;
     }
 
-    public double getRatedCapacity() {
-        return ratedCapacity;
+    public double getTemperature() {
+        return temperature;
     }
 
-    public void setRatedCapacity(double ratedCapacity) {
-        this.ratedCapacity = ratedCapacity;
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+    }
+
+    public double getSoc() {
+        return soc;
+    }
+
+    public void setSoc(double soc) {
+        this.soc = soc;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 }
