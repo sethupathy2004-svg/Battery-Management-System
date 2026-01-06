@@ -1,4 +1,5 @@
-body {
+<style>
+    body {
     font-family: Arial, sans-serif;
     background-color: #f4f6f8;
     text-align: center;
@@ -49,3 +50,4 @@ table, th, td {
 th, td {
     padding: 10px;
 }
+</style>
